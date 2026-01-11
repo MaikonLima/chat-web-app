@@ -1,0 +1,19 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Ativa o Corepack (pnpm oficial)
+RUN corepack enable
+
+# Copia apenas manifests para cache eficiente
+COPY package.json pnpm-lock.yaml ./
+
+# Instala dependências com pnpm
+RUN pnpm install --frozen-lockfile
+
+# Copia o restante do código
+COPY . .
+
+EXPOSE 3000
+
+CMD ["pnpm", "run", "start:dev"]

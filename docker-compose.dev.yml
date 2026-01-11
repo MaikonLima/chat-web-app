@@ -1,0 +1,47 @@
+version: "3.9"
+
+# Este arquivo configura o ambiente de desenvolvimento do chat.io usando Docker.
+# Inclui backend (Nestjs/TypeScript) e frontend (React/Vite) com hot-reload ativado.
+#
+# COMANDOS:
+#   docker compose -f docker-compose.dev.yml up --build    # Iniciar desenvolvimento
+#   docker compose -f docker-compose.dev.yml down          # Parar serviços
+#   docker compose -f docker-compose.dev.yml logs -f       # Ver logs
+#  
+# PORTAS:
+#   - Backend:  http://localhost:3000 (API)
+#   - Frontend: http://localhost:5173 (Web App)
+
+services:
+  backend:
+    container_name: chat-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: pnpm run start:dev
+    restart: unless-stopped
+
+  frontend:
+    container_name: chat-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_WS_URL=http://localhost:3000
+    command: npm run dev -- --host
+    depends_on:
+      - backend
+    restart: unless-stopped
