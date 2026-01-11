@@ -63,6 +63,7 @@ Tecnologias e ferramentas utilizadas:
 
 - Domain Driven Design (DDD) de forma pragmática
 - Ports & Adapters (Hexagonal Architecture)
+
 #### Separação clara entre:
 - Domain
 - Application
@@ -71,8 +72,17 @@ Tecnologias e ferramentas utilizadas:
 
 ## 🖼️ Imagens do Sistema
 
+### Tela de Login
+![Tela de Login](./docs/tela1.png)
 
+### Sala de Chat
+![Sala de Chat](./docs/tela2.png)
 
+### Tema Escuro
+![Tema Escuro](./docs/tela3.png)
+
+### Logs
+![Tema Logs](./docs/logs.png)
 
 ## 🐳 Executando com Docker
 
