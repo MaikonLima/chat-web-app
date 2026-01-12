@@ -1,5 +1,5 @@
 
-# 💬 Chat.io – Full Stack
+# 💬 Chat.io
 
 Aplicação de chat web em tempo real, onde cada aba do navegador representa um usuário diferente.
 O sistema permite login simples, troca de mensagens em tempo real, indicador de digitação, notificações, contador de mensagens não lidas e alternância de tema (claro/escuro).
